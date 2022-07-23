@@ -4,7 +4,7 @@ import {
 } from '@nestjs/typeorm';
 import { DB_HOST, DB_NAME, DB_PASS, DB_PORT, DB_TYPE, DB_USER } from './consts.config';
 
-export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
+export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = process.env.PROFILE == "dev" ? {
     imports: [ConfigModule],
     inject: [ConfigService],
     useFactory: async (config: ConfigService) => {
@@ -35,9 +35,9 @@ export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
             logging: true,
         };
     },
-};
+} : {};
 
-export const typeOrmConfig = {
+export const typeOrmConfig = process.env.PROFILE == "dev" ? {
     type: "postgres",
     host: process.env.DB_HOST,
     port: parseInt(process.env.DB_PORT, 10),
@@ -54,4 +54,4 @@ export const typeOrmConfig = {
     },
     synchronize: false,
     logging: true,
-};
+} : {};
