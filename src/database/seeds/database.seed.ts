@@ -8,6 +8,7 @@ import { IdentificacionTypeEntity } from "../../shared/entity/identificacion-typ
 import { PlanetEntity } from "../../shared/entity/planet.entity";
 import { RoleEntity } from "../../shared/entity/role.entity";
 import { UserEntity } from "../../shared/entity/user.entity";
+import { SpacecraftCompanyEntity } from "../../shared/entity/spacecraft-company.entity";
 
 export class DatabaseSeed implements Seeder {
 
@@ -60,7 +61,10 @@ export class DatabaseSeed implements Seeder {
                         planetEntity.icon = `${planet}.jpg`;
                         await repository.save(planetEntity);
                     }
-                })
+                }),
+
+                this.executed(dataSource.getRepository(SpacecraftCompanyEntity), (repository) =>
+                    factory(SpacecraftCompanyEntity)().createMany(50)),
             ]);
 
             await this.executed(dataSource.getRepository(UserEntity), async (repository) => {

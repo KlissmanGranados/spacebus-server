@@ -8,7 +8,7 @@ export class PlanetEntity {
     @Column({ length: 45, unique: true })
     name: string;
 
-    @Column({ length: 100, unique: true })
+    @Column({ length: 300, unique: true })
     image: string;
 
     @Column({ length: 100, unique: true })

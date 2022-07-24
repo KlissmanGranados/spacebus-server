@@ -5,9 +5,9 @@ export class SpacecraftCompanyEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({ length: 45, unique: true })
+    @Column({ length: 100, unique: true })
     name: string;
 
-    @Column({ length: 45, unique: true })
+    @Column({ length: 300, unique: true })
     logo: string;
 }

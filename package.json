@@ -48,7 +48,7 @@
     "typeorm-seeding": "^1.6.1"
   },
   "devDependencies": {
-    "@faker-js/faker": "5.5.3",
+    "@faker-js/faker": "^7.3.0",
     "@nestjs/cli": "^9.0.0",
     "@nestjs/schematics": "^9.0.0",
     "@nestjs/testing": "^9.0.0",
