@@ -4,7 +4,7 @@ import { IsEmail, IsString, MaxLength, ValidateNested } from "class-validator";
 import * as crypto from "crypto";
 import { CreatePersonDto } from "./create-person.dto";
 
-export class CreateUserDto {
+export class SignUpDto {
 
     @IsString()
     @MaxLength(45)

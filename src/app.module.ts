@@ -9,7 +9,7 @@ import { DatabaseModule } from './database/database.module';
         ConfigModule.forRoot({ isGlobal: true }),
         SharedModule,
         AutModule,
-        DatabaseModule
+        DatabaseModule,
     ],
     providers: [],
     controllers: []
