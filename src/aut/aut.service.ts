@@ -7,6 +7,9 @@ import { Role } from './enums/role.enum';
 import { UserRepository } from '@shared/repository/user.repository';
 import { RoleRepository } from '@shared/repository/role.repository';
 import { PersonRepository } from '@shared/repository/person.repository';
+import { IdentificationTypeRepository } from '@shared/repository/identification-type.repository';
+import { CountryRepository } from '@shared/repository/country.repository';
+import { PlanetRepository } from '@shared/repository/planet.repository';
 
 @Injectable()
 export class AutService {
@@ -17,25 +20,43 @@ export class AutService {
         private readonly jwtService: JwtService,
         private readonly userRepository: UserRepository,
         private readonly rolesRepository: RoleRepository,
-        private readonly personRepository: PersonRepository) { }
+        private readonly personRepository: PersonRepository,
+        private readonly identificationTypeRepository: IdentificationTypeRepository,
+        private readonly countryRepository: CountryRepository,
+        private readonly planetRepository: PlanetRepository) { }
 
     async signup(signUp: SignUpDto): Promise<void> {
 
-        let user = await this.userRepository.findOneBy({ email: signUp.email });
+
         const role = await this.rolesRepository.findOneBy({ id: signUp.role.id });
 
         if (!role || !AutService.ALLOWED_ROLES.some(allowed => allowed === role.name))
             throw new BadRequestException("Rol is not valid");
+
+        const { identificacion, identificacionType } = signUp.person;
+
+        if (!(await this.identificationTypeRepository.findOneBy({ id: identificacionType.id }))) {
+            throw new BadRequestException("identification type is not valid");
+        }
+
+        if (!(await this.countryRepository.findOneBy({ id: signUp.person.country.id }))) {
+            throw new BadRequestException("country is not valid");
+        }
+
+        if (!(await this.planetRepository.findOneBy({ id: signUp.person.favoritePlanet.id }))) {
+            throw new BadRequestException("planet is not valid");
+        }
+
+        let user = await this.userRepository.findOneBy({ email: signUp.email });
         if (user) throw new BadRequestException("Email is not available");
 
         user = await this.userRepository.findOneBy({ username: signUp.username });
         if (user) throw new BadRequestException("UserName is not available")
 
-        const { identificacion, identificacionType } = signUp.person;
         const person = await this.personRepository.findOneBy({ identificacion, identificacionType });
 
         if (person) {
-            user = { ...signUp, id: 1, profileImage: null, person };
+            user = { ...signUp, id: undefined, profileImage: null, person };
             await this.userRepository.save(user);
         } else {
             await this.userRepository.save(signUp)

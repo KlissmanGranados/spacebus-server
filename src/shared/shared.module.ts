@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { DatabaseModule } from 'database/database.module';
+import { DatabaseModule } from '../database/database.module';
 import { CountryRepository } from './repository/country.repository';
 import { IdentificationTypeRepository } from './repository/identification-type.repository';
 import { PersonRepository } from './repository/person.repository';

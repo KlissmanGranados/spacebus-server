@@ -1,9 +1,9 @@
-import { Body, Controller, Get, Post, SetMetadata, UseGuards } from '@nestjs/common';
-import { CurrentUser } from 'aut/decorators/current-user.decorator';
-import { SigninDto } from 'aut/dto/signin.dto';
-import { SignUpDto } from 'aut/dto/signup.dto';
-import { UserDto } from 'aut/dto/user.dto';
-import { AutService } from 'aut/aut.service';
+import { Body, Controller, Get, Post } from '@nestjs/common';
+import { CurrentUser } from './decorators/current-user.decorator';
+import { SigninDto } from './dto/signin.dto';
+import { SignUpDto } from './dto/signup.dto';
+import { UserDto } from './dto/user.dto';
+import { AutService } from './aut.service';
 import { AllowUnauthorizedRequest } from './decorators/allow-unauthorized-request.decorator';
 
 @Controller('aut')
