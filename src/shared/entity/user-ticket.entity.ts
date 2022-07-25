@@ -8,11 +8,11 @@ export class UserTicketEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @ManyToOne(() => UserEntity, userEntity => userEntity.id)
+    @ManyToOne(() => UserEntity, userEntity => userEntity.id, { nullable: false })
     @JoinColumn({ name: "userId" })
     user: UserEntity;
 
-    @ManyToOne(() => TicketEntity, ticketEntity => ticketEntity.id)
+    @ManyToOne(() => TicketEntity, ticketEntity => ticketEntity.id, { nullable: false })
     @JoinColumn({ name: "ticketId" })
     ticket: TicketEntity;
 }

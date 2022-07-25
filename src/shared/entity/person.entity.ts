@@ -23,15 +23,16 @@ export class PersonEntity {
     })
     user: UserEntity[];
 
-    @ManyToOne(() => CountryEntity, (countryEntity => countryEntity.id))
+    @ManyToOne(() => CountryEntity, (countryEntity => countryEntity.id), { nullable: false })
     @JoinColumn({ name: "countryId" })
     country: CountryEntity;
 
-    @ManyToOne(() => IdentificacionTypeEntity, (identificacionTypeEntity => identificacionTypeEntity.id))
+    @ManyToOne(() => IdentificacionTypeEntity, (identificacionTypeEntity =>
+        identificacionTypeEntity.id), { nullable: false })
     @JoinColumn({ name: "identificacionTypeId" })
     identificacionType: IdentificacionTypeEntity;
 
-    @ManyToOne(() => PlanetEntity, (planetEntity) => planetEntity.id)
+    @ManyToOne(() => PlanetEntity, (planetEntity) => planetEntity.id, { nullable: false })
     @JoinColumn({ name: "favoritePlanetId" })
     favoritePlanet: PlanetEntity;
 }

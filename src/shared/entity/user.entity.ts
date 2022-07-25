@@ -20,14 +20,16 @@ export class UserEntity {
     email: string;
 
     @ManyToOne(() => RoleEntity, (roleEntity) => roleEntity.id, {
-        eager: true
+        eager: true,
+        nullable: false
     })
     @JoinColumn({ name: "roleId" })
     role: RoleEntity;
 
     @ManyToOne(() => PersonEntity, (person) => person.id, {
         eager: true,
-        cascade: true
+        cascade: true,
+        nullable: false
     })
     @JoinColumn({ name: "personId" })
     person: PersonEntity;

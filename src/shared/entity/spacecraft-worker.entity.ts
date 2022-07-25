@@ -7,11 +7,12 @@ export class SpacecraftWorkerEntity {
     @PrimaryColumn()
     id: number;
 
-    @ManyToOne(() => UserEntity, (userEntity) => userEntity.id)
+    @ManyToOne(() => UserEntity, (userEntity) => userEntity.id, { nullable: false })
     @JoinColumn({ name: "userId" })
     user: UserEntity;
 
-    @ManyToOne(() => SpacecraftCompanyEntity, (spacecraftCompanyEntity) => spacecraftCompanyEntity.id)
+    @ManyToOne(() => SpacecraftCompanyEntity, (spacecraftCompanyEntity) =>
+        spacecraftCompanyEntity.id, { nullable: false })
     @JoinColumn({ name: "spacecraftCompanyId" })
     spacecraftCompany: SpacecraftCompanyEntity;
 

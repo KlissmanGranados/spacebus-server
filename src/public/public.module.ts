@@ -1,5 +1,4 @@
-import { CacheInterceptor, CacheModule, Module } from '@nestjs/common';
-import { APP_INTERCEPTOR } from '@nestjs/core';
+import { CacheModule, Module } from '@nestjs/common';
 import { SharedModule } from '@shared/shared.module';
 import { PublicController } from './public.controller';
 
@@ -8,11 +7,6 @@ import { PublicController } from './public.controller';
     ttl: 3600 * 24
   })],
   controllers: [PublicController],
-  providers: [
-    {
-      provide: APP_INTERCEPTOR,
-      useClass: CacheInterceptor,
-    }
-  ]
+  providers: []
 })
 export class PublicModule { }

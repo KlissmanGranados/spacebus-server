@@ -7,7 +7,8 @@ export class RocketLauncheEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @ManyToOne(() => SpacecraftCompanyEntity, (spacecraftCompanyEntity) => spacecraftCompanyEntity.id)
+    @ManyToOne(() => SpacecraftCompanyEntity, (spacecraftCompanyEntity) =>
+        spacecraftCompanyEntity.id, { nullable: false, eager: true })
     @JoinColumn({ name: "spacecraftCompanyId" })
     spacecraftCompany: SpacecraftCompanyEntity;
 
@@ -23,14 +24,14 @@ export class RocketLauncheEntity {
     @Column()
     launchDate: Date;
 
-    @ManyToOne(() => PlanetEntity, planetEntity => planetEntity.id)
+    @ManyToOne(() => PlanetEntity, planetEntity => planetEntity.id, { nullable: false })
     @JoinColumn({ name: "planetIdFrom" })
     planetFrom: PlanetEntity;
 
-    @ManyToOne(() => PlanetEntity, planetEntity => planetEntity.id)
+    @ManyToOne(() => PlanetEntity, planetEntity => planetEntity.id, { nullable: false })
     @JoinColumn({ name: "planetIdTo" })
     planetTo: PlanetEntity;
 
-    @Column({ default: true })
+    @Column({ default: true, select: false })
     status: boolean;
 }

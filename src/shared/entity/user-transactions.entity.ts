@@ -12,7 +12,7 @@ export class UserTransactionsEntity {
     @Column()
     date: Date;
 
-    @ManyToOne(() => UserEntity, userEntity => userEntity.id)
+    @ManyToOne(() => UserEntity, userEntity => userEntity.id, { nullable: false })
     @JoinColumn({ name: "userId" })
     user: UserEntity;
 }

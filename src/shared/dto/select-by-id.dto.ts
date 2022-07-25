@@ -7,6 +7,9 @@ export class SelectById {
     name: string;
 }
 
+export class SpaceCraftCompanyDto extends SelectById { }
+export class RocketLauncheDto extends SelectById { }
+
 export class RoleDto extends SelectById { }
 
 export class CountryDto extends SelectById { }

@@ -9,7 +9,7 @@ export class UserBalanceEntity {
     @Column({ type: "float", default: 0 })
     balance: number;
 
-    @OneToOne(type => UserEntity, { lazy: true })
+    @OneToOne(type => UserEntity, { lazy: true, nullable: false })
     @JoinColumn({ name: "userId" })
     user: UserEntity;
 }

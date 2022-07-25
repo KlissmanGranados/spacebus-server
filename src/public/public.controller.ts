@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { CacheInterceptor, Controller, Get, UseInterceptors } from '@nestjs/common';
 import { CountryRepository } from '@shared/repository/country.repository';
 import { IdentificationTypeRepository } from '@shared/repository/identification-type.repository';
 import { PlanetRepository } from '@shared/repository/planet.repository';
@@ -7,6 +7,7 @@ import { AllowUnauthorizedRequest } from 'aut/decorators/allow-unauthorized-requ
 
 @Controller('public')
 @AllowUnauthorizedRequest()
+@UseInterceptors(CacheInterceptor)
 export class PublicController {
     constructor(
         private readonly rolesRepository: RoleRepository,

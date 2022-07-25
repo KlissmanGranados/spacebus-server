@@ -13,12 +13,14 @@ export class TicketEntity {
     @Column({ type: "float" })
     price: number;
 
-    @ManyToOne(() => SpacecraftCompanyEntity, spacecraftCompanyEntity => spacecraftCompanyEntity.id)
+    @ManyToOne(() => SpacecraftCompanyEntity, spacecraftCompanyEntity => spacecraftCompanyEntity.id, { nullable: false })
     @JoinColumn({ name: "spacecraftCompanyId" })
     spacecraftCompany: SpacecraftCompanyEntity;
 
     @OneToOne(type => RocketLauncheEntity, {
-        eager: true
+        eager: true,
+        cascade: true,
+        nullable: false
     })
     @JoinColumn({ name: "rocketLauncheId" })
     rocketLaunche: RocketLauncheEntity;

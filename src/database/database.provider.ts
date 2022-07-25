@@ -30,7 +30,7 @@ export const DatabaseProvider = [
                     entities: [
                         "dist/**/*.entity.js"
                     ],
-                    synchronize: profile === "dev",
+                    synchronize: true, //profile === "dev",
                     ssl: profile == "dev" ? false : { rejectUnauthorized: false }
                 }
             );
