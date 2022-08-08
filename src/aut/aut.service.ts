@@ -10,6 +10,8 @@ import { PersonRepository } from '@shared/repository/person.repository';
 import { IdentificationTypeRepository } from '@shared/repository/identification-type.repository';
 import { CountryRepository } from '@shared/repository/country.repository';
 import { PlanetRepository } from '@shared/repository/planet.repository';
+import { UserBalanceRepository } from '@shared/repository/user-balance.repository';
+import { UserBalanceEntity } from '@shared/entity/user-balance.entity';
 
 @Injectable()
 export class AutService {
@@ -23,10 +25,10 @@ export class AutService {
         private readonly personRepository: PersonRepository,
         private readonly identificationTypeRepository: IdentificationTypeRepository,
         private readonly countryRepository: CountryRepository,
-        private readonly planetRepository: PlanetRepository) { }
+        private readonly planetRepository: PlanetRepository,
+        private readonly userBalance: UserBalanceRepository) { }
 
     async signup(signUp: SignUpDto): Promise<void> {
-
 
         const role = await this.rolesRepository.findOneBy({ id: signUp.role.id });
 
@@ -57,10 +59,13 @@ export class AutService {
 
         if (person) {
             user = { ...signUp, id: undefined, profileImage: null, person };
-            await this.userRepository.save(user);
+            user = await this.userRepository.save(user);
         } else {
-            await this.userRepository.save(signUp)
+            user = await this.userRepository.save(signUp)
         }
+        const userBalanceEntity = new UserBalanceEntity();
+        userBalanceEntity.user = user;
+        await this.userBalance.save(userBalanceEntity)
     }
 
     async signin(signinDto: SigninDto): Promise<{ token: string }> {

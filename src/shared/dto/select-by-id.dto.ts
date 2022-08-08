@@ -7,13 +7,11 @@ export class SelectById {
     name: string;
 }
 
+export class TicketDto extends SelectById { };
 export class SpaceCraftCompanyDto extends SelectById { }
 export class RocketLauncheDto extends SelectById { }
-
 export class RoleDto extends SelectById { }
-
 export class CountryDto extends SelectById { }
-
 export class IdentificationTypeDto extends SelectById { }
 
 export class PlanetDto extends SelectById {

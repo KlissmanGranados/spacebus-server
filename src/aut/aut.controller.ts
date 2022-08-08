@@ -2,16 +2,16 @@ import { Body, Controller, Get, Post } from '@nestjs/common';
 import { CurrentUser } from './decorators/current-user.decorator';
 import { SigninDto } from './dto/signin.dto';
 import { SignUpDto } from './dto/signup.dto';
-import { UserDto } from './dto/user.dto';
 import { AutService } from './aut.service';
 import { AllowUnauthorizedRequest } from './decorators/allow-unauthorized-request.decorator';
+import { IJwtPayload } from './jwt-payload.interface';
 
 @Controller('aut')
 export class AutController {
     constructor(private readonly autService: AutService) { }
 
     @Get('/me')
-    async me(@CurrentUser() user: UserDto) {
+    async me(@CurrentUser() user: IJwtPayload) {
         return user;
     }
 

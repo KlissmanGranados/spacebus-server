@@ -9,10 +9,12 @@ export class BaseRepository<T> extends Repository<T> {
         super(target, manager, queryRunner);
     }
 
+    getEntityManager(): EntityManager {
+        return this.manager;
+    }
+
     async findAll(
-
         { order, page, pageSize, where }: PageAndSortingDto<T>): Promise<PaginatorDto<T>> {
-
         const paginator = new PaginatorDto<T>();
         paginator.totalElements = await this.count({ where });
 

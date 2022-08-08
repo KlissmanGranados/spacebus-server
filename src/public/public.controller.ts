@@ -3,6 +3,7 @@ import { CountryRepository } from '@shared/repository/country.repository';
 import { IdentificationTypeRepository } from '@shared/repository/identification-type.repository';
 import { PlanetRepository } from '@shared/repository/planet.repository';
 import { RoleRepository } from '@shared/repository/role.repository';
+import { SpacecraftCompanyRepository } from '@shared/repository/spacecraft-company.repository';
 import { AllowUnauthorizedRequest } from 'aut/decorators/allow-unauthorized-request.decorator';
 
 @Controller('public')
@@ -13,7 +14,8 @@ export class PublicController {
         private readonly rolesRepository: RoleRepository,
         private readonly countryRepository: CountryRepository,
         private readonly identificationType: IdentificationTypeRepository,
-        private readonly planetRepository: PlanetRepository) { }
+        private readonly planetRepository: PlanetRepository,
+        private readonly spacecraftCompanyRepository: SpacecraftCompanyRepository) { }
 
     @Get("/roles")
     getRoles() {
@@ -33,6 +35,11 @@ export class PublicController {
     @Get("/planets")
     getPlanets() {
         return this.planetRepository.find();
+    }
+
+    @Get("/companies")
+    getCompanies() {
+        return this.spacecraftCompanyRepository.find();
     }
 
 }

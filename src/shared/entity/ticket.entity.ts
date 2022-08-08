@@ -1,6 +1,7 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { RocketLauncheEntity } from "./rocket-launche.entity";
 import { SpacecraftCompanyEntity } from "./spacecraft-company.entity";
+import { UserTicketEntity } from "./user-ticket.entity";
 
 @Entity("tickets")
 export class TicketEntity {

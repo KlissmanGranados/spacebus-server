@@ -6,4 +6,5 @@ export interface IJwtPayload {
     email: string;
     role: Role;
     iat?: Date;
+    hasRole?: (role: Role) => boolean;
 }
