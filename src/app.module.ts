@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './database/database.module';
 import { PublicModule } from './public/public.module';
 import { TicketModule } from './ticket/ticket.module';
+import { ProfileModule } from './profile/profile.module';
 @Module({
     imports: [
         ConfigModule.forRoot({ isGlobal: true }),
@@ -13,6 +14,7 @@ import { TicketModule } from './ticket/ticket.module';
         DatabaseModule,
         PublicModule,
         TicketModule,
+        ProfileModule,
     ],
     providers: [],
     controllers: []
