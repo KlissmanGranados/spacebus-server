@@ -1,7 +1,6 @@
 export class ProfileMeDto {
     user: {
         id: Number,
-        balance: Number,
         email: String,
         username: String
     };
@@ -16,4 +15,5 @@ export class ProfileMeDto {
         identificacion: String
     };
     profileImage: String;
+    balance: Number;
 }
