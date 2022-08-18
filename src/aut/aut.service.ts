@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { SignUpDto } from 'aut/dto/signup.dto';
 import { SigninDto } from 'aut/dto/signin.dto';
@@ -73,7 +73,7 @@ export class AutService {
         const user = await this.userRepository.findOneBy(signinDto);
 
         if (!user) {
-            throw new NotFoundException("invalid credentials");
+            throw new BadRequestException("invalid credentials");
         }
 
         const { id, email, username, role } = user;
