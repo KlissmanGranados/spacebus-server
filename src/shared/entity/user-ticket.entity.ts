@@ -1,8 +1,9 @@
+import { DATABASE_CONFIG } from "@config/consts.config";
 import { Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { TicketEntity } from "./ticket.entity";
 import { UserEntity } from "./user.entity";
 
-@Entity("usersTickets")
+@Entity("usersTickets", DATABASE_CONFIG)
 export class UserTicketEntity {
 
     @PrimaryGeneratedColumn()

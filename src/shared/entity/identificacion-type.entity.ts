@@ -1,6 +1,7 @@
+import { DATABASE_CONFIG } from "@config/consts.config";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity("identificacionType")
+@Entity("identificacionType", DATABASE_CONFIG)
 export class IdentificacionTypeEntity {
     @PrimaryGeneratedColumn()
     id: number;

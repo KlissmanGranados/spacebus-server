@@ -1,10 +1,11 @@
+import { DATABASE_CONFIG } from "@config/consts.config";
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { CountryEntity } from "./country.entity";
 import { IdentificacionTypeEntity } from "./identificacion-type.entity";
 import { PlanetEntity } from "./planet.entity";
 import { UserEntity } from "./user.entity";
 
-@Entity("persons")
+@Entity("persons", DATABASE_CONFIG)
 export class PersonEntity {
     @PrimaryGeneratedColumn()
     id: number;

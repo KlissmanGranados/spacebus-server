@@ -1,8 +1,9 @@
+import { DATABASE_CONFIG } from "@config/consts.config";
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
 import { SpacecraftCompanyEntity } from "./spacecraft-company.entity";
 import { UserEntity } from "./user.entity";
 
-@Entity("spacecraftWorker")
+@Entity("spacecraftWorker", DATABASE_CONFIG)
 export class SpacecraftWorkerEntity {
     @PrimaryColumn()
     id: number;

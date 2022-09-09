@@ -1,9 +1,9 @@
+import { DATABASE_CONFIG } from "@config/consts.config";
 import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { RocketLauncheEntity } from "./rocket-launche.entity";
 import { SpacecraftCompanyEntity } from "./spacecraft-company.entity";
-import { UserTicketEntity } from "./user-ticket.entity";
 
-@Entity("tickets")
+@Entity("tickets", DATABASE_CONFIG)
 export class TicketEntity {
     @PrimaryGeneratedColumn()
     id: number;

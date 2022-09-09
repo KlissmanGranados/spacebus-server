@@ -1,8 +1,9 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { SpacecraftCompanyEntity } from "./spacecraft-company.entity";
 import { PlanetEntity } from "./planet.entity";
+import { DATABASE_CONFIG } from "@config/consts.config";
 
-@Entity("rocketLaunches")
+@Entity("rocketLaunches", DATABASE_CONFIG)
 export class RocketLauncheEntity {
     @PrimaryGeneratedColumn()
     id: number;

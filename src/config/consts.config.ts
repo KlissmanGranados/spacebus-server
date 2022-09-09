@@ -6,3 +6,4 @@ export const DB_PASS = "DB_PASS";
 export const DB_NAME = "DB_NAME";
 export const PROFILE = "PROFILE";
 export const JWT_SECRET = "JWT_SECRET";
+export const DATABASE_CONFIG = { schema: "spacebus" };

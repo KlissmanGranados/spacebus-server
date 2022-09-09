@@ -1,8 +1,9 @@
+import { DATABASE_CONFIG } from "@config/consts.config";
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { PersonEntity } from "./person.entity";
 import { RoleEntity } from "./role.entity";
 
-@Entity("users")
+@Entity("users", DATABASE_CONFIG)
 export class UserEntity {
     @PrimaryGeneratedColumn()
     id: number;
